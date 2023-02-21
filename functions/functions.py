@@ -121,4 +121,4 @@ dict1 = {'a':1, 'b':2}
 list3 = [*dict1]
 # list3 = ['a', 'b']
 dict2 = {**dict1}
-#dict2 = {'a':1, 'b':2}
+#dict2 = {'a':1, 'b':2
