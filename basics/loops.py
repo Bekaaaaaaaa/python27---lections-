@@ -47,3 +47,6 @@ list1 - [1,2,3,4,5,6,1,1]
 while 1 in list1:
     list1.remove(1)
 print(list1)
+
+
+#for придуман для итерируемых обьектов (list, dict, set, 
