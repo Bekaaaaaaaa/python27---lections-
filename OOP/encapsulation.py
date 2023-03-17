@@ -3,6 +3,7 @@ class A:
     _attr2 = 'protected'
     __attr3 = 'private'
 
+a = A()
 print(A.attr1)
 print(A._attr2)
 # print(A.__attr3)
@@ -33,53 +34,72 @@ print(obj.get_age())
 
 
 class A:
+    num = 7
+    # hello = 5
     @property
     def hello(self):
         return 5
 
     # property.setter работает когда мы пишем obj.attr = ... 
-    @hello.setter
-    def hello(self, new_value):
-        print("setter")
+    # @hello.setter
+    # def hello(self, new_value):
+    #     print("setter")
 
-    # property.deleter работает когда мы пишем del obj.attr
-    @hello.deleter
-    def hello(self):
-        print("deleter")
+    # # property.deleter работает когда мы пишем del obj.attr
+    # @hello.deleter
+    # def hello(self):
+    #     print("deleter")
 
 obj = A()
+print(obj.num)
 print(obj.hello)
-obj.hello = 'new value'
-del obj.hello
+# obj.hello = 'new value'
+# del obj.hello
 
 
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.__age = age
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.__age = age
 
-    @property
-    def age(self):
-        return self.__age
+#     @property
+#     def age(self):
+#         return self.__age
 
-    @age.setter
-    def age(self, new_age):
-        if new_age > 0 and new_age < 120:
-            self.__age = new_age
-        else:
-            raise Exception("Invalid age")
+#     @age.setter
+#     def age(self, new_age):
+#         if new_age > 0 and new_age < 120:
+#             self.__age = new_age
+#         else:
+#             raise Exception("Invalid age")
 
-    @age.deleter
-    def age(self):
-        if self.__age < 100:
-            raise Exception("Cannot delete age")
-        del self.__age
+#     @age.deleter
+#     def age(self):
+#         if self.__age < 100:
+#             raise Exception("Cannot delete age")
+#         del self.__age
 
-obj = Person('Nastya', 12)
-print(obj.age)
-obj.age = 34
-print(obj.age)
-# obj.age = -100  # Exception: Invalid age
-# del obj.age  # Exception: Cannot delete age
-obj.age = 115
-del obj.age
+# obj = Person('Nastya', 12)
+# print(obj.age)
+# obj.age = 34
+# print(obj.age)
+# # obj.age = -100  # Exception: Invalid age
+# # del obj.age  # Exception: Cannot delete age
+# obj.age = 115
+# del obj.age
+
+"============Задачи==========="
+'1'
+class A:
+    def public(self):
+        return 'Public method'
+    def _protected(self):
+        return 'Protected method'
+
+    def __private(self):
+        return 'Private method'
+
+obj1 = A()
+print(obj1.public)
+print(obj1._protected)
+print(obj1._A__private)
