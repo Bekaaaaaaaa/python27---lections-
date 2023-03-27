@@ -121,6 +121,76 @@ winner2 = Nobel("Литература", 1994, "Кэндзабуро Оэ")
 print(winner2.category, winner2.year, winner2.winner)
 # print(winner1.get_year())
 
+'8'
+class Password:
+    def __init__(self, password):
+        self.password = password
+
+    def __str__(self):
+        return '*' * len(self.password)        
+    def validate(self):
+        if len(self.password) < 8 and len(password) > 15:
+            return 'Password should be longer than 8, and less than 15'
+        if not any(map(lambda i: i.isdigit(), self.password)):
+            return 'Password should contain numbers too'
+        if not any(map(lambda i: i.isalpha(), self.password)):
+            return 'Password should contain letters as well'
+        if not any (map(lambda i: i in ['@', '#', '&', '$', '%', '!', '~', '*'], self.password)):
+            return 'Your password should have some symbols'
+        
+        return 'Ваш пароль сохранен.'
+
+password = Password("bekashreks")
+print(password.validate())
+print(password)
+
+'9'
+
+class Math:
+    def __init__(self, number):
+        self.number = number
+    
+    def get_factorial(self):
+        self.factorial = 1
+        for i in range(2, self.number+1):
+            self.factorial = self.factorial*i
+        return self.factorial
+    
+    def get_sum(self):
+        number = [int(x)for x in str(self.number)]
+        beka = sum(number)
+        return beka
+    def get_mul_table(self):
+        s = ''
+        for i in range(10):
+            s += f'{self.number}x{i+1}={self.number * (i+1)}' + '\n'
+        return s
+
+number1 = Math(5)
+print(number1.get_factorial())
+print(number1.get_sum())
+print(number1.get_mul_table())
+
+'10'
+class ToDo:
+    instances = {}
+    def __init__(self, string):
+        self.string = string
+    def give_priority(self, priority):
+        ToDo.instances[priority] = self.string
+    
+    def list_of_tasks(self):
+        return sorted(ToDo.instances.items())
+var1 = ToDo('выгулять собаку')
+var1.give_priority(2)
+var2 = ToDo('сходить в кино')
+var2.give_priority(3)
+var3 = ToDo('сделать домашку')
+var3.give_priority(1)
+
+print(var3.list_of_tasks())
+
+
 '===========задачи инкапсулияция==========='
 '1'
 class A:
