@@ -56,3 +56,97 @@ SELECT column1, column3 FROM name_of_table;
 ```sql
 DELETE FROM name_of_table WHERE codition;
 --удаление всех записей из таблиы соответсввующих данному условию
+```
+
+```sql
+SELECT * FROM name_of _table WHERE column = 'hello';
+--сторогое равенство
+```
+
+
+```sql
+SELECT * FROM name_of_table WHERE column LIKE '%hello%';
+--записи влючающие в себя данную строку с учетом регистра
+--aaahello
+--hello
+--hello world
+--Hello World - не продут (потому что регистр другой)
+```
+
+
+```sql
+SELECT * FROM name_of_table WHERE column ILIKE '%hello%';
+--записи влючающие в себя данную строку с учетом регистра
+--aaahello
+--hello
+--hello world
+--Hello World - пройдет потому что ILIKE не учитывает регистр 
+--HELLO
+```
+
+```sql
+SELECT * FROM name_of_table ORDER BY column;
+--сортировка записей по данному полю в порядке возростания 
+```
+
+
+```sql
+SELECT * FROM name_of_table ORDER BY column DESC;
+--сортировка записей по данному полю в порядке убывания
+```
+
+```sql
+SELECT * FROM name_of_table LIMIT 10(любое число);
+--вывод до определенного числа (или же до 10) 
+```
+
+
+```sql
+SELECT * FROM name_of_table OFFSET 10(любое число);
+--пропускаем до определенного числа (или же до 10) 
+```
+
+
+```sql
+SELECT * FROM name_of_table LIMIT 10 OFFSET 5;
+--пропускаем первые 5 записей 
+--вытаскиваем 10 записей после 5
+```
+
+# Обновление таблицы
+```sql
+ALTER TABLE name_of_table ADD COLUMN col_name col_type constraint;
+-- добавляем новую колонку в таблицу
+ ```
+
+ ```sql
+ ALTER TABLE name_of_table RENAME COLUMN col_name TO new_col_name;
+ --переименнование колонки
+```
+
+```sql
+ALTER TABLE name_of_table ALTER COLUMN col_name SET DATA TYPE new_type;
+--изменение типа данных у поля 
+```
+
+
+
+# Ограничения (counstrints)
+* UNIQUE - не разрешает дубликаты 
+* NOT NULL - требует обязательного заполнения поля 
+
+
+
+# Связи 
+## Виды связей
+> Один к одному (one to one)
+* один человек - один профиль 
+* один автор - одна автобиография 
+
+> Один ко многим (one to many)
+* один блогер - много постов 
+* одна марка - много моделей
+* одна страна - много областей
+
+> Многие ко многим (many to many)
+* один разработчик - много проектов. один проект - много разрабов 
