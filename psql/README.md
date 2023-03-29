@@ -75,7 +75,6 @@ SELECT * FROM name_of_table WHERE column LIKE '%hello%';
 
 
 ```sql
-SELECT * FROM name_of_table WHERE column ILIKE '%hello%';
 --записи влючающие в себя данную строку с учетом регистра
 --aaahello
 --hello
@@ -134,6 +133,8 @@ ALTER TABLE name_of_table ALTER COLUMN col_name SET DATA TYPE new_type;
 # Ограничения (counstrints)
 * UNIQUE - не разрешает дубликаты 
 * NOT NULL - требует обязательного заполнения поля 
+* PRIMERY KEY - как UNIQUE и  NOT NULL + строит binary tree для быстрого поиска 
+* FOREIGN KEY - ссылается на pk в другой таблице и проверяет существует ли такой ID 
 
 
 
@@ -150,3 +151,31 @@ ALTER TABLE name_of_table ALTER COLUMN col_name SET DATA TYPE new_type;
 
 > Многие ко многим (many to many)
 * один разработчик - много проектов. один проект - много разрабов 
+
+
+
+task
+'3'
+SELECT title, genretype FROM work WHERE genretype = 'p';
+
+
+
+## Реализация one2many в postgres
+```sql
+CREATE TABLE blogger (
+    id serial PRIMARY KEY,
+    title varchar(100)
+    body text,
+    blogger_id int,
+
+    CONSTRAINT fk_post-blogger 
+    FOREIGN KEY (blogger_id) REFERENCES blogger (id)
+    );
+```
+
+# JOINS
+> **JOIN** - инструкция, которая позваляет одним SELECT, брать данные из двух таблиц (у которых есть связанные поля)
+>**INNER JOIN (JOIN)** - достаются записи у которых есть данные в обоих таблицах
+>**FULL JOIN** - достаются все записи и с первой таблицы и со второй 
+
+
