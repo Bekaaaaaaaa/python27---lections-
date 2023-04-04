@@ -179,3 +179,24 @@ CREATE TABLE blogger (
 >**FULL JOIN** - достаются все записи и с первой таблицы и со второй 
 
 
+# Арегатные функции 
+> все агрегатые функции исползуются с 'group by'
+**SUM** -  считает сумму все записей в сгрупированном поле 
+
+
+
+```sql
+select customer.name, SUM(product.price) from customer 
+join cart on customer.id = cart.customer_id
+join product on product.id = cart.product_id 
+group by (customer.id);
+```
+
+>**AVG** - считает среднее значение всех записец в сгруппированном поле 
+
+```sql
+select customer.name, AVG(product.price) from customer 
+join cart on customer.id = cart.customer_id
+join product on product.id = cart.product_id 
+group by (customer.id);
+```
